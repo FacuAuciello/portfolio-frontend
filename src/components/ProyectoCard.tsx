@@ -5,20 +5,23 @@ interface ProyectoCardProps {
 }
 
 function ProyectoCard({nombre, descripcion, tecnologias}: ProyectoCardProps) {
+
   return (
     <article>
       <h2>{nombre}</h2>
       <p>{descripcion}</p>
-      <ul>
-         {/* por cada tecnologia del array genero un li = lista */}
 
-         {tecnologias.map(tecnologia => (
-      <li key={tecnologia}>
-      </li> 
-  ))}
-</ul>
+      <ul>
+        {/* por cada tecnologia del array genero un li = lista */}
+        {tecnologias.map(tecnologia => (
+          <li key={tecnologia}>
+            {tecnologia}
+          </li>
+        ))}
+      </ul>
     </article>
   );
 }
 
 export default ProyectoCard;
+
