@@ -3,11 +3,12 @@ import "./App.css";
 
 import Presentacion from "./components/Presentacion";
 import ProyectoCard from "./components/ProyectoCard";
+import Contacto from "./components/Contacto";
 
 interface Proyecto {
     idProyecto: number;
     nombre: string;
-    fotoUrl: string;
+    imagenes: string[];
     descripcion: string;
     tecnologias: string[];
 }
@@ -52,11 +53,11 @@ function App() {
                     </span>
 
                     <a
-                        href="#contacto"
-                        className="navbar-contacto"
-                    >
-                        Contactarme
-                    </a>
+    href="#contacto"
+    className="navbar-contacto"
+>
+    Contacto
+</a>
                 </div>
             </header>
 
@@ -79,11 +80,13 @@ function App() {
                                 nombre={proyecto.nombre}
                                 descripcion={proyecto.descripcion}
                                 tecnologias={proyecto.tecnologias}
-                                fotoUrl={proyecto.fotoUrl}
+                                imagenes={proyecto.imagenes}
                             />
                         ))}
                     </div>
                 </section>
+
+                <Contacto />
             </main>
         </>
     );

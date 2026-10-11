@@ -1,5 +1,12 @@
 :root {
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     line-height: 1.5;
     font-weight: 400;
 
@@ -8,6 +15,7 @@
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -21,25 +29,157 @@ html {
 }
 
 body {
+    position: relative;
+
     margin: 0;
+
     min-width: 320px;
     min-height: 100vh;
 
-    background-color: #050816;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #0d1a30 0%,
+            #07101f 38%,
+            #050816 75%
+        );
+
     color: #ffffff;
+}
+
+
+/* CAPA DE ESTRELLAS PRINCIPAL */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
 
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.85) 1px, transparent 1.5px),
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.55) 1px, transparent 1.5px),
-        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.6) 1px, transparent 1.5px),
-        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.75) 1px, transparent 1.5px),
-        radial-gradient(circle at 65% 55%, rgba(255, 255, 255, 0.5) 1px, transparent 1.5px),
-        radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.7) 1px, transparent 1.5px),
-        radial-gradient(circle at 85% 70%, rgba(255, 255, 255, 0.55) 1px, transparent 1.5px),
-        radial-gradient(circle at 92% 18%, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
-        linear-gradient(180deg, #060913 0%, #081120 45%, #091528 100%);
-    background-attachment: fixed;
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.9) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.55) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(170, 205, 255, 0.5) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        260px 260px,
+        390px 390px,
+        520px 520px;
+
+    background-position:
+        20px 40px,
+        120px 170px,
+        250px 80px;
+
+    opacity: 0.65;
+
+    animation: moverEstrellas 45s linear infinite;
+
+    z-index: 0;
 }
+
+
+/* SEGUNDA CAPA PARA DAR PROFUNDIDAD */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.45) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.3) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        180px 180px,
+        320px 320px;
+
+    background-position:
+        70px 100px,
+        200px 30px;
+
+    opacity: 0.45;
+
+    animation: moverEstrellasLentas 80s linear infinite;
+
+    z-index: 0;
+}
+
+
+/* TODO EL CONTENIDO QUEDA ARRIBA DEL FONDO */
+
+#root {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* MOVIMIENTO DE LAS ESTRELLAS */
+
+@keyframes moverEstrellas {
+    from {
+        background-position:
+            20px 40px,
+            120px 170px,
+            250px 80px;
+    }
+
+    to {
+        background-position:
+            20px 900px,
+            120px 1100px,
+            250px 1300px;
+    }
+}
+
+@keyframes moverEstrellasLentas {
+    from {
+        background-position:
+            70px 100px,
+            200px 30px;
+    }
+
+    to {
+        background-position:
+            70px 750px,
+            200px 950px;
+    }
+}
+
 
 a {
     color: inherit;
