@@ -2,26 +2,49 @@ interface ProyectoCardProps {
   nombre: string;
   descripcion: string;
   tecnologias: string[];
+  fotoUrl: string;
 }
 
-function ProyectoCard({nombre, descripcion, tecnologias}: ProyectoCardProps) {
-
+function ProyectoCard({
+  nombre,
+  descripcion,
+  tecnologias,
+  fotoUrl,
+}: ProyectoCardProps) {
   return (
-    <article>
-      <h2>{nombre}</h2>
-      <p>{descripcion}</p>
+    <article className="proyecto-card">
 
-      <ul>
-        {/* por cada tecnologia del array genero un li = lista */}
-        {tecnologias.map(tecnologia => (
-          <li key={tecnologia}>
-            {tecnologia}
-          </li>
-        ))}
-      </ul>
+      <div className="proyecto-imagen">
+        {fotoUrl && (
+          <img
+            src={fotoUrl}
+            alt={`Captura del proyecto ${nombre}`}
+          />
+        )}
+      </div>
+
+      <div className="proyecto-contenido">
+
+        <h3>{nombre}</h3>
+
+        <p>{descripcion}</p>
+
+        <div className="proyecto-tecnologias">
+          {tecnologias.map((tecnologia) => (
+            <span key={tecnologia}>
+              {tecnologia}
+            </span>
+          ))}
+        </div>
+
+        <button>
+          Ver detalles
+        </button>
+
+      </div>
+
     </article>
   );
 }
 
 export default ProyectoCard;
-
